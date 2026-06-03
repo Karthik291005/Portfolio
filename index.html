@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. Pamu Dobbidi | Professor of Physics, IIT Guwahati</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ═══ DESKTOP NAVBAR ═══ -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-brand">
+        <img src="Images/IITG_Logo.jpg" alt="IIT Guwahati Logo" />
+        <span>Dr. Pamu Dobbidi</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="students.html">Students</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="https://www.iitg.ac.in/" target="_blank" class="external-link">IITG Home ↗</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ═══ MOBILE HEADER ═══ -->
+  <header class="mobile-header">
+    <span class="brand-title">Dr. Pamu Dobbidi</span>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- ═══ SIDE DRAWER ═══ -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <nav class="side-drawer" id="sideDrawer">
+    <div class="drawer-header">
+      <img src="Images/IITG_Logo.jpg" alt="IIT Guwahati Logo" class="drawer-logo" />
+      <button class="drawer-close" id="drawerClose" aria-label="Close menu">✕</button>
+    </div>
+    <div class="drawer-nav">
+      <a href="index.html" class="active">Home</a>
+      <a href="research.html">Research</a>
+      <a href="students.html">Students</a>
+      <a href="publications.html">Publications</a>
+      <a href="courses.html">Courses</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="https://www.iitg.ac.in/" target="_blank" class="drawer-external">IITG Home ↗</a>
+    </div>
+  </nav>
+
+  <!-- ═══ ANNOUNCEMENT TICKER ═══ -->
+  <div class="ticker-wrap" aria-label="Announcements">
+    <div class="ticker-inner">
+      <span class="ticker-item">We are looking for talented and motivated candidates (Ph.D. / Post-Doc) interested in lead-free piezoelectric sensors, microwave ferrites, and thin-film batteries — Contact: pamu@iitg.ac.in</span>
+      <span class="ticker-item">We are looking for talented and motivated candidates (Ph.D. / Post-Doc) interested in lead-free piezoelectric sensors, microwave ferrites, and thin-film batteries — Contact: pamu@iitg.ac.in</span>
+    </div>
+  </div>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <img src="Images/Pamu.jpg" alt="Dr. Pamu Dobbidi" class="hero-photo" />
+        <div class="hero-text">
+          <p class="designation">Professor · Department of Physics</p>
+          <h1>Dr. Pamu Dobbidi</h1>
+          <p class="dept">Indian Institute of Technology Guwahati, Assam — 781039</p>
+          <div class="contact-row">
+            <span>📧 pamu@iitg.ac.in</span>
+            <span>📞 +91-361-2582721</span>
+            <span>📍 Guwahati, India</span>
+          </div>
+          <div class="hero-tags">
+            <span class="tag">Ferroelectrics</span>
+            <span class="tag">Piezoelectrics</span>
+            <span class="tag">Microwave Ceramics</span>
+            <span class="tag">Bioceramics</span>
+            <span class="tag">Oxide Thin Films</span>
+            <span class="tag">Nanomaterials</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SPECIALIZATION CAROUSEL ═══ -->
+  <section class="section" style="background: var(--bg-white); padding: 56px 0;">
+    <div class="container">
+      <h2 class="section-title">Areas of Specialization</h2>
+      <p class="section-sub">Core research domains explored in the Condensed Matter & Materials Physics Laboratory</p>
+      <div class="carousel-wrap">
+        <div class="carousel-track" id="carouselTrack">
+          <div class="carousel-slide">
+            <div class="slide-image-container">
+                <img src="Images/LowLossMaterials.jpg" alt="High-K and Low Loss Materials " class="slide-img">
+            </div>
+            <div class="slide-content">
+              <h3>High-k &amp; Low Loss Materials</h3>
+              <p>Microwave ceramics with tailored dielectric constants for next-generation communication and satellite applications, including ISRO-qualified ZST MIC substrates.</p>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <div class="slide-image-container">
+                <img src="Images/PiezoElectrics.jpg" alt="Ferroelectrics and Piezoelectrics" class="slide-img">
+            </div>
+            <div class="slide-content">
+              <h3>Ferroelectrics and Piezoelectrics</h3>
+              <p>Development of lead-free piezoelectric sensors, actuators, and energy harvesting materials using BNT and KNN-based systems for sustainable electronics.</p>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <div class="slide-image-container">
+                <img src="Images/microwaveferrites.jpg" alt="Bioceramics and Microwave Ferrites" class="slide-img">
+            </div>
+            <div class="slide-content">
+              <h3>Bioceramics &amp; Microwave Ferrites</h3>
+              <p>Synthesis and characterization of biologically compatible ceramic materials for medical implants alongside spinel and hexagonal ferrite systems for microwave absorption.</p>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <div class="slide-image-container">
+                <img src="Images/semiconductor.jpg" alt="Oxide Thin Films & Semiconductors Research" class="slide-img">
+            </div>
+            <div class="slide-content">
+              <h3>Oxide Thin Films &amp; SemiConductors</h3>
+              <p>Advanced fabrication and electronic tuning of wide-bandgap metal oxide semiconductors and heterostructures, focusing on transparent conducting oxides (TCOs), thin-film transistors (TFTs), and next-generation energy storage components like thin-film batteries.</p>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <div class="slide-image-container">
+                <img src="Images/nanomaterials.jpg" alt="Nanomaterials" class="slide-img">
+            </div>
+            <div class="slide-content">
+              <h3>Nanomaterials</h3>
+              <p>Pulsed laser deposition and sol-gel techniques for functional synthesis of nanostructured semiconductors for energy storage applications.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="prevBtn" aria-label="Previous">&#8249;</button>
+        <div class="carousel-dots" id="carouselDots"></div>
+        <button class="carousel-btn" id="nextBtn" aria-label="Next">&#8250;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ACADEMIC PROFILE ═══ -->
+  <section class="section">
+    <div class="container">
+      <div class="two-col">
+        <!-- Education Timeline -->
+        <div>
+          <h2 class="section-title">Academic Credentials</h2>
+          <p class="section-sub">Educational background and postdoctoral training</p>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-year">2008 – 2009</div>
+              <div class="timeline-title">Dr. D. S. Kothari Postdoctoral Fellow</div>
+              <div class="timeline-sub">University of Hyderabad, Hyderabad</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">2008</div>
+              <div class="timeline-title">Ph.D. in Physics</div>
+              <div class="timeline-sub">University of Hyderabad, Hyderabad</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">2002</div>
+              <div class="timeline-title">M.Phil in Physics</div>
+              <div class="timeline-sub">University of Hyderabad, Hyderabad</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">2001</div>
+              <div class="timeline-title">M.Sc in Physics</div>
+              <div class="timeline-sub">University of Hyderabad, Hyderabad</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">Undergraduate - 1999</div>
+              <div class="timeline-title">B.Sc. in Physics</div>
+              <div class="timeline-sub">Silver Jubilee Government College (APRDC), Kurnool</div>
+            </div>
+          </div>
+        </div>
+        <!-- Work Experience -->
+        <div>
+          <h2 class="section-title">Work Experience</h2>
+          <p class="section-sub">Professional positions at IIT Guwahati</p>
+          <table class="exp-table">
+            <thead>
+              <tr>
+                <th>Period</th>
+                <th>Position</th>
+                <th>Institution</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>2021 – Present</td>
+                <td><strong>Professor of Physics</strong></td>
+                <td>IIT Guwahati</td>
+              </tr>
+              <tr>
+                <td>2014 – 2021</td>
+                <td>Associate Professor of Physics</td>
+                <td>IIT Guwahati</td>
+              </tr>
+              <tr>
+                <td>2009 – 2014</td>
+                <td>Assistant Professor of Physics</td>
+                <td>IIT Guwahati</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ AWARDS & ACHIEVEMENTS ═══ -->
+  <section class="section" style="background: var(--bg-white);">
+  <div class="container">
+    <h2 class="section-title">Awards &amp; Achievements</h2>
+    <p class="section-sub">Recognition, technology transfers, and competitive fellowships from national bodies</p>
+    
+    <div class="grid-3">
+      <div class="award-card">
+        <div class="year">2022</div>
+        <h4>ISRO Space-Qualified Substrates</h4>
+        <p class="award-desc">The ZST MIC substrates prepared indigenously are qualified for space applications and officially approved by the Indian Space Research Organisation (ISRO).</p>
+      </div>
+
+      <div class="award-card highlight-card">
+        <div class="year">Technology Transfer</div>
+        <h4>Industrial Technology Transfer</h4>
+        <p class="award-desc">Optimized processing variables to prepare high-densified ceramic discs, sputtering targets, and microwave windows indigenously, successfully transferring the technology to the industry.</p>
+      </div>
+
+      <div class="award-card">
+        <div class="year">2012</div>
+        <h4>SERB Young Scientist Award</h4>
+        <p class="award-desc">Received the prestigious Young Scientist Research Award from the Science & Engineering Research Board (SERB), sponsored by the Department of Science and Technology (DST).</p>
+      </div>
+
+      <div class="award-card">
+        <div class="year">2010</div>
+        <h4>DAE BRNS Research Award</h4>
+        <p class="award-desc">Honored with the Young Scientist Research Award from the Board of Research in Nuclear Sciences (BRNS), Department of Atomic Energy (DAE).</p>
+      </div>
+
+      <div class="award-card">
+        <div class="year">2008</div>
+        <h4>Dr. D.S. Kothari Postdoctoral Fellowship</h4>
+        <p class="award-desc">Selected for the prestigious national postdoctoral fellowship scheme funded and managed by the University Grants Commission (UGC-India).</p>
+      </div>
+
+      <div class="award-card">
+        <div class="year">2007 - 2008</div>
+        <h4>National Fusion Programme SRF</h4>
+        <p class="award-desc">Selected and served as a Senior Research Fellow (SRF) under the prestigious National Fusion Programme network, India.</p>
+      </div>
+
+      <div class="award-card">
+        <div class="year">2004 - 2007</div>
+        <h4>ISRO Research Fellowship (JRF / SRF)</h4>
+        <p class="award-desc">Selected as a Junior Research Fellow (JRF) for two years and promoted to Senior Research Fellow (SRF) under a dedicated ISRO research project framework.</p>
+      </div>
+
+      <div class="award-card">
+        <div class="year">2002</div>
+        <h4>GATE Qualification</h4>
+        <p class="award-desc">Successfully qualified the national-level Graduate Aptitude Test for Engineering (GATE-2002) in Physics.</p>
+      </div>
+
+      <div class="award-card">
+        <div class="year">2001</div>
+        <h4>Special Gold Medal (M.Sc. Physics)</h4>
+        <p class="award-desc">Awarded the Special Gold Medal for outstanding academic performance during M.Sc. Physics (1999-2001) at the University of Hyderabad.</p>
+      </div>
+    </div>
+  </div>
+  </section>
+  <section class="section">
+    <div class="container">
+        <div>
+          <h2 class="section-title">Research Experience</h2>
+          <p class="section-sub">Core fellowships and sponsored research history</p>
+          <div class="highlight-box">
+            <h4 style="margin-bottom:14px; color:var(--iitg-blue);">Fellowships &amp; Sponsored Investigations</h4>
+            <ul class="numbered-list">
+              <li>Worked as a Postdoctoral Fellow in School of Physics, University of Hyderabad, India.</li>
+              <li>Worked as a Senior Research Fellow (SRF) in National Fusion Programme (NFP) Project entitled: “Development of high-k and low loss materials for Microwave windows in Fusion Systems”</li>
+              <li>Worked as Junior Research Fellow and Senior Research Fellow in ISRO Project entitled: “Development of high-k and low loss materials for Miniaturized Integrated Circuit Applications”</li>
+            </ul>
+          </div>
+        </div>
+    </div>
+  </section>
+  <!-- ═══ CONFERENCES ORGANIZED ═══ -->
+  <section class="section">
+    <div class="container">
+      <div class="two-col">
+        
+        <!-- Left Column: Conferences Organized -->
+        <div>
+          <h2 class="section-title">Conferences Organized</h2>
+          <p class="section-sub">National and international events convened at IIT Guwahati</p>
+          <div class="highlight-box">
+            <h4 style="margin-bottom:14px; color:var(--iitg-blue);">Conferences, Workshops &amp; Courses</h4>
+            <ul class="numbered-list">
+              <li>Convenor of Nanostructured Materials and their Applications in Nanotechnology (NAMAAN-2020) Sponsored by TEQIP during 26-30 October 2020.</li>
+              <li>Convenor of Vacuum science and thin film technology, Sponsored by QIP during 31-05-2020 to 05-09-2020.</li>
+              <li>Convenor of “Nanomaterials and smart devices” Sponsored by TEQIP during 17-21 September 2018.</li>
+              <li>Convenor of 4th workshop on NEMS/MEMS and Theranostic Devices during February 26 – 28th, 2018.</li>
+              <li>QIP short term course on “Smart Materials and Their Applications in Nanotechnology (SMATAN-2014)” December 23-27, 2014.</li>
+              <li>Secretary (Technical) of "International Conference on Advanced Nanomaterials and Nanotechnology (ICANN-2011)", held at IIT Guwahati during December 8 - 10, 2011.</li>
+              <li>Secretary (Technical) of "International Conference on Advanced Nanomaterials and Nanotechnology (ICANN-2009)", held at IIT Guwahati during December 9 - 11, 2009.</li>
+            </ul>
+          </div>
+        </div>
+   <!-- ═══ INSTITUTE RESPONSIBILITIES ═══ -->
+
+        <!-- Right Column: Institute Responsibilities -->
+        <!-- Block 2: Institute Responsibilities (Timeline Layout) -->
+        <div>
+          <h2 class="section-title">Institute Responsibilities</h2>
+          <p class="section-sub">Administrative appointments and campus service timeline at IITG</p>
+          <div class="highlight-box">
+            
+            <!-- Timeline Wrapper Container -->
+            <div class="timeline-container" style="display: flex; flex-direction: column; gap: 0px; position: relative; padding-left: 20px; border-left: 2px solid var(--iitg-blue);">
+              
+              <!-- Event 1 -->
+              <div class="timeline-item" style="position: relative;">
+                <div class="timeline-dot" style="position: absolute; left: -27px; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: var(--iitg-blue);"></div>
+                <span class="timeline-date" style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 2px;">2015 April – 2017 April</span>
+                <strong style="color: var(--iitg-blue); font-size: 0.95rem;">Warden — Dihing Hostel</strong>
+                <p style="margin: 2px 0 0; font-size: 0.9rem; color: var(--text-dark);">Managed residential operations, student welfare frameworks, and general hostel administration at IITG.</p>
+              </div>
+
+              <!-- Event 2 -->
+              <div class="timeline-item" style="position: relative;">
+                <div class="timeline-dot" style="position: absolute; left: -27px; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: var(--iitg-blue);"></div>
+                <span class="timeline-date" style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 2px;">2015 April – 2017 April</span>
+                <strong style="color: var(--iitg-blue); font-size: 0.95rem;">Chairman — HAB Purchase Committee</strong>
+                <p style="margin: 2px 0 0; font-size: 0.9rem; color: var(--text-dark);">Headed the evaluation panel and procurement operations for the Hostel Affairs Board (HAB).</p>
+              </div>
+
+              <!-- Event 3 -->
+              <div class="timeline-item" style="position: relative;">
+                <div class="timeline-dot" style="position: absolute; left: -27px; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: var(--iitg-blue);"></div>
+                <span class="timeline-date" style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 2px;">2013 April – 2015 March</span>
+                <strong style="color: var(--iitg-blue); font-size: 0.95rem;">Associate Warden — Dibang Hostel</strong>
+                <p style="margin: 2px 0 0; font-size: 0.9rem; color: var(--text-dark);">Supported student residential affairs, campus coordination, and administrative requirements.</p>
+              </div>
+
+              <!-- Event 4 -->
+              <div class="timeline-item" style="position: relative;">
+                <div class="timeline-dot" style="position: absolute; left: -27px; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: var(--iitg-blue);"></div>
+                <span class="timeline-date" style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 2px;">2013, 2015, 2016, 2017, 2018</span>
+                <strong style="color: var(--iitg-blue); font-size: 0.95rem;">Member — Convocation Organizing Committees</strong>
+                <p style="margin: 2px 0 0; font-size: 0.9rem; color: var(--text-dark);">Assisted in planning, protocol logistics, and coordination for multiple annual convocation ceremonies.</p>
+              </div>
+
+              <!-- Event 5 -->
+              <div class="timeline-item" style="position: relative;">
+                <div class="timeline-dot" style="position: absolute; left: -27px; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: var(--iitg-blue);"></div>
+                <span class="timeline-date" style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 2px;">2013</span>
+                <strong style="color: var(--iitg-blue); font-size: 0.95rem;">Committee Member — 49th Inter IIT Sports Meet</strong>
+                <p style="margin: 2px 0 0; font-size: 0.9rem; color: var(--text-dark);">Served on the local organizing team hosting the pan-IIT competitive athletic meet.</p>
+              </div>
+
+              <!-- Event 6 (Ongoing Roles Grouped) -->
+              <div class="timeline-item" style="position: relative;">
+                <div class="timeline-dot" style="position: absolute; left: -27px; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: var(--iitg-blue);"></div>
+                <span class="timeline-date" style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 2px;">Standing / Academic Committees</span>
+                <strong style="color: var(--iitg-blue); font-size: 0.95rem;">Departmental &amp; Senate Committees</strong>
+                <ul style="margin: 4px 0 0; padding-left: 16px; font-size: 0.9rem; color: var(--text-dark); line-height: 1.5;">
+                  <li>Faculty Advisor, DPPC (Department Purchase &amp; Policy Committee)</li>
+                  <li>Member, Physics Department Doctoral Programme Committee</li>
+                  <li>Member, Senate Academic Committee</li>
+                </ul>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ═══ RESEARCH OPENINGS ═══ -->
+  <section class="section" style="background: var(--bg-white);">
+    <div class="container">
+      <h2 class="section-title">Research Openings</h2>
+      <p class="section-sub">Join our experimental condensed matter research group</p>
+      <div class="alert-box">
+        <strong>📢 Openings for Ph.D. / Post-Doc Researchers:</strong> We are actively looking for motivated candidates with backgrounds in physics, materials science, or chemistry to work on lead-free piezoelectric sensors, microwave ferrites, and thin-film batteries. Candidates with experience in ceramic synthesis, thin-film deposition, or dielectric characterization are encouraged to apply.<br /><br />
+        <strong>Contact:</strong> Dr. Pamu Dobbidi &nbsp;·&nbsp; <a href="mailto:pamu@iitg.ac.in"><strong>pamu@iitg.ac.in</strong></a> &nbsp;·&nbsp; Department of Physics, IIT Guwahati
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <img src="Images/Pamu.jpg" alt="Dr. Pamu Dobbidi" class="footer-photo" />
+        <div class="footer-info">
+          <h3>Dr. Pamu Dobbidi</h3>
+          <p>Professor, Department of Physics<br />
+          Indian Institute of Technology Guwahati (IITG), Guwahati — 781039, Assam, India.</p>
+          <p class="contact-line">
+            📧 <a href="mailto:pamu@iitg.ac.in">pamu@iitg.ac.in</a> &nbsp;|&nbsp; 📞 +91-361-2582721
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Dr. Pamu Dobbidi, IIT Guwahati. All rights reserved.</span>
+        <span>Department of Physics · <a href="https://www.iitg.ac.in/phy/" target="_blank" style="color:var(--accent-gold-lt);">iitg.ac.in/phy ↗</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── MOBILE DRAWER ──
+    const hamburger = document.getElementById('hamburgerBtn');
+    const drawer    = document.getElementById('sideDrawer');
+    const overlay   = document.getElementById('drawerOverlay');
+    const closeBtn  = document.getElementById('drawerClose');
+
+    function openDrawer() { drawer.classList.add('is-open'); overlay.classList.add('is-open'); document.body.style.overflow = 'hidden'; }
+    function closeDrawer(){ drawer.classList.remove('is-open'); overlay.classList.remove('is-open'); document.body.style.overflow = ''; }
+
+    hamburger.addEventListener('click', openDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+
+    // ── CAROUSEL ──
+    const track  = document.getElementById('carouselTrack');
+    const slides = track.querySelectorAll('.carousel-slide');
+    const dots   = document.getElementById('carouselDots');
+    let current  = 0;
+    let autoTimer;
+
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Slide ' + (i+1));
+      dot.addEventListener('click', () => goTo(i));
+      dots.appendChild(dot);
+    });
+
+    function goTo(n) {
+      current = (n + slides.length) % slides.length;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      document.querySelectorAll('.carousel-dot').forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+    function startAuto() { autoTimer = setInterval(() => goTo(current + 1), 4500); }
+    function stopAuto()  { clearInterval(autoTimer); }
+
+    document.getElementById('prevBtn').addEventListener('click', () => { stopAuto(); goTo(current - 1); startAuto(); });
+    document.getElementById('nextBtn').addEventListener('click', () => { stopAuto(); goTo(current + 1); startAuto(); });
+    startAuto();
+  </script>
+</body>
+</html>

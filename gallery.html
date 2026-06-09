@@ -5,8 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gallery | Dr. Pamu Dobbidi | IIT Guwahati</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/x-icon" href="Images/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="Images/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="Images/apple-touch-icon.pngs" />
   <style>
-    /* Gallery-specific overrides */
     .gallery-filters {
       display: flex;
       flex-wrap: wrap;
@@ -35,17 +38,55 @@
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 20px;
     }
-    /* Masonry-style spans */
-    .gallery-item.tall { grid-row: span 2; }
-    .gallery-item.wide { grid-column: span 2; }
-    @media (max-width: 600px) {
-      .gallery-item.wide { grid-column: span 1; }
+    /* ── GALLERY ITEM ── */
+    .gallery-item {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--iitg-blue);
+      max-height: 520px;
     }
-    /* Lightbox */
+    .gallery-item {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+    }
+
+    .gallery-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .gallery-item img.gallery-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .gallery-item:hover img.gallery-img {
+      transform: scale(1.06);
+    }
+    .gallery-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(10,37,64,0.88));
+      padding: 28px 16px 14px;
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+    .gallery-item:hover .gallery-caption {
+      transform: translateY(0);
+    }
+    /* ── LIGHTBOX ── */
     .lightbox {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.92);
+      background: rgba(0,0,0,0.93);
       z-index: 2000;
       display: flex;
       align-items: center;
@@ -55,39 +96,49 @@
       transition: opacity 0.3s ease;
       padding: 20px;
     }
-    .lightbox.is-open { opacity: 1; pointer-events: all; }
-    .lightbox-content { position: relative; max-width: 900px; width: 100%; }
-    .lightbox-content img { width: 100%; border-radius: var(--radius-lg); }
+    .lightbox.is-open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .lightbox-content {
+      position: relative;
+      max-width: 960px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .lightbox-content img {
+      width: 100%;
+      max-height: 80vh;
+      object-fit: contain;
+      border-radius: var(--radius-lg);
+      display: block;
+    }
     .lightbox-caption {
-      color: rgba(255,255,255,0.8);
+      color: rgba(255,255,255,0.75);
       font-size: 0.9rem;
       text-align: center;
       margin-top: 14px;
     }
     .lightbox-close {
       position: absolute;
-      top: -48px; right: 0;
+      top: -44px;
+      right: 0;
       background: none;
       border: none;
       color: #fff;
       font-size: 2rem;
       cursor: pointer;
       opacity: 0.7;
-      transition: opacity var(--transition);
+      line-height: 1;
+      transition: opacity 0.2s;
     }
     .lightbox-close:hover { opacity: 1; }
-    .gallery-placeholder {
-      width: 100%;
-      height: 100%;
-      min-height: 200px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
+
+    @media (max-width: 600px) {
+      .gallery-grid { grid-template-columns: 1fr; }
     }
-    .gallery-placeholder .icon { font-size: 2.5rem; opacity: 0.5; }
-    .gallery-placeholder .label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.5; }
   </style>
 </head>
 <body>
@@ -147,7 +198,6 @@
   <section class="section">
     <div class="container">
 
-      <!-- Filters -->
       <div class="gallery-filters">
         <button class="filter-btn active" data-filter="all">All</button>
         <button class="filter-btn" data-filter="lab">Lab &amp; Research</button>
@@ -156,132 +206,88 @@
         <button class="filter-btn" data-filter="campus">Campus</button>
       </div>
 
-      <!-- Gallery Grid -->
       <div class="gallery-grid" id="galleryGrid">
 
-        <!-- Each gallery-item: replace src with actual photos -->
-        <div class="gallery-item" data-category="group" style="aspect-ratio:4/3; border-radius:var(--radius-lg); overflow:hidden; position:relative; background:linear-gradient(135deg,#0A2540,#1A5276); cursor:pointer;" onclick="openLightbox(this)">
-          <img src="Images/group2.jpg" alt="Group picture at Conference" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'" />
-          <div class="gallery-placeholder" style="position:absolute;inset:0;color:#fff;">
-            <div class="icon"><img src="Images/group2.jpg"></div>
-            <div class="label">Group photo with Students at a Conference</div>
-          </div>
-          <div class="gallery-caption" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(10,37,64,0.9));padding:24px 16px 16px;color:#fff;font-size:0.85rem;">Group photo with Students at a Conference</div>
-        </div>
+  <div class="gallery-item" data-category="events" onclick="openLightbox('Images/group2.jpg', 'Group photo with Students at a Conference')">
+    <img class="gallery-img" src="Images/group2.jpg" alt="Group photo with Students at a Conference" />
+    <div class="gallery-caption">Group photo with Students at a Conference</div>
+  </div>
 
-        <div class="gallery-item" data-category="group" style="aspect-ratio:4/3; border-radius:var(--radius-lg); overflow:hidden; position:relative; background:linear-gradient(135deg,#133A60,#0E3B5C); cursor:pointer;" onclick="openLightbox(this)">
-          <img src="Images/group 3.jpeg" alt="With students" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'" />
-          <div class="gallery-placeholder" style="position:absolute;inset:0;color:#fff;">
-            <div class="icon"><img src="Images/group 3.jpeg" alt="Outing with my Students"></div>
-            <div class="label">Outing with my Students</div>
-          </div>
-          <div class="gallery-caption" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(10,37,64,0.9));padding:24px 16px 16px;color:#fff;font-size:0.85rem;">Outing with my Students</div>
-        </div>
+  <div class="gallery-item" data-category="group" onclick="openLightbox('Images/group 3.jpeg', 'Outing with my Students')">
+    <img class="gallery-img" src="Images/group 3.jpeg" alt="Outing with my Students" />
+    <div class="gallery-caption">Outing with my Students</div>
+  </div>
 
-        <div class="gallery-item" data-category="lab" style="aspect-ratio:4/3; border-radius:var(--radius-lg); overflow:hidden; position:relative; background:linear-gradient(135deg,#1A2C40,#243B55); cursor:pointer;" onclick="openLightbox(this)">
-          <img src="Images/singletargetRF.jpg" alt="Single Target RF Sputtering" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'" />
-          <div class="gallery-placeholder" style="position:absolute;inset:0;color:#fff;">
-            <div class="icon"><img src="Images/singletargetRF.jpg"></div>
-            <div class="label">Single Target RF Sputtering</div>
-          </div>
-          <div class="gallery-caption" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(10,37,64,0.9));padding:24px 16px 16px;color:#fff;font-size:0.85rem;">Single Target RF Sputtering</div>
-        </div>
+  <div class="gallery-item" data-category="lab" onclick="openLightbox('Images/singletargetRF.jpg', 'Single Target RF Magnetron Sputtering System')">
+    <img class="gallery-img" src="Images/singletargetRF.jpg" alt="Single Target RF Sputtering" />
+    <div class="gallery-caption">Single Target RF Magnetron Sputtering System</div>
+  </div>
 
-        <div class="gallery-item" data-category="lab" style="aspect-ratio:16/9; border-radius:var(--radius-lg); overflow:hidden; position:relative; background:linear-gradient(135deg,#0D3349,#1A4D70); cursor:pointer;" onclick="openLightbox(this)">
-          <img src="Images/nano ball mill.jpg" alt="Nano Ball mill" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'" />
-          <div class="gallery-placeholder" style="position:absolute;inset:0;color:#fff;">
-            <div class="icon"><img src="Images/nano ball mill.jpg" alt="Nano ball mill"></div>
-            <div class="label">Nano ball mill</div>
-          </div>
-          <div class="gallery-caption" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(10,37,64,0.9));padding:24px 16px 16px;color:#fff;font-size:0.85rem;">Nano ball mill</div>
-        </div>
+  <div class="gallery-item" data-category="lab" onclick="openLightbox('Images/DualTargetRf.jpg', 'Dual Target RF Magnetron Sputtering System')">
+    <img class="gallery-img" src="Images/DualTargetRf.jpg" alt="Dual Target RF Sputtering" />
+    <div class="gallery-caption">Dual Target RF Magnetron Sputtering System</div>
+  </div>
 
-        <div class="gallery-item" data-category="lab" style="aspect-ratio:4/3; border-radius:var(--radius-lg); overflow:hidden; position:relative; background:linear-gradient(135deg,#102A43,#1B4F72); cursor:pointer;" onclick="openLightbox(this)">
-          <img src="Images/planetary ball mill.jpg" alt="Planetary ball mill" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'" />
-          <div class="gallery-placeholder" style="position:absolute;inset:0;color:#fff;">
-            <div class="icon"><img src="Images/planetary ball mill.jpg" alt="Planetary ball mill"></div>
-            <div class="label">Planetary ball mill</div>
-          </div>
-          <div class="gallery-caption" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(10,37,64,0.9));padding:24px 16px 16px;color:#fff;font-size:0.85rem;">Planetary ball mill</div>
-        </div>
+  <div class="gallery-item" data-category="lab" onclick="openLightbox('Images/nano ball mill.jpg', 'Nano Ball Mill')">
+    <img class="gallery-img" src="Images/nano ball mill.jpg" alt="Nano Ball Mill" />
+    <div class="gallery-caption">Nano Ball Mill</div>
+  </div>
 
-        <div class="gallery-item" data-category="events" style="aspect-ratio:4/3; border-radius:var(--radius-lg); overflow:hidden; position:relative; background:linear-gradient(135deg,#1E3A5F,#2C5F8A); cursor:pointer;" onclick="openLightbox(this)">
-          <img src="award2012.jpg" alt="SERB Award" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'" />
-          <div class="gallery-placeholder" style="position:absolute;inset:0;color:#fff;">
-            <div class="icon">🏆</div>
-            <div class="label">SERB Young Scientist Award</div>
-          </div>
-          <div class="gallery-caption" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(10,37,64,0.9));padding:24px 16px 16px;color:#fff;font-size:0.85rem;">SERB Young Scientist Award ceremony — New Delhi (2012)</div>
-        </div>
+  <div class="gallery-item" data-category="lab" onclick="openLightbox('Images/planetary ball mill.jpg', 'Planetary Ball Mill')">
+    <img class="gallery-img" src="Images/planetary ball mill.jpg" alt="Planetary Ball Mill" />
+    <div class="gallery-caption">Planetary Ball Mill</div>
+  </div>
 
-        <div class="gallery-item" data-category="campus" style="aspect-ratio:4/3; border-radius:var(--radius-lg); overflow:hidden; position:relative; background:linear-gradient(135deg,#0B3D4C,#145E72); cursor:pointer;" onclick="openLightbox(this)">
-          <img src="campus1.jpg" alt="IIT Guwahati Campus" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'" />
-          <div class="gallery-placeholder" style="position:absolute;inset:0;color:#fff;">
-            <div class="icon">🏛️</div>
-            <div class="label">IIT Guwahati Campus</div>
-          </div>
-          <div class="gallery-caption" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(10,37,64,0.9));padding:24px 16px 16px;color:#fff;font-size:0.85rem;">Physics Department Building, IIT Guwahati — View from Brahmaputra riverbank</div>
-        </div>
+  <div class="gallery-item" data-category="lab" onclick="openLightbox('Images/dielectricresonators.jpg', 'Dielectric resonators with different sizes')">
+    <img class="gallery-img" src="Images/dielectricresonators.jpg" alt="Dielectric Resonators" />
+    <div class="gallery-caption">Dielectric resonators with different sizes</div>
+  </div>
 
-        <div class="gallery-item" data-category="lab" style="aspect-ratio:4/3; border-radius:var(--radius-lg); overflow:hidden; position:relative; background:linear-gradient(135deg,#12324F,#1B4C77); cursor:pointer;" onclick="openLightbox(this)">
-          <img src="lab4.jpg" alt="FESEM" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'" />
-          <div class="gallery-placeholder" style="position:absolute;inset:0;color:#fff;">
-            <div class="icon">🔍</div>
-            <div class="label">FESEM Imaging</div>
-          </div>
-          <div class="gallery-caption" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(10,37,64,0.9));padding:24px 16px 16px;color:#fff;font-size:0.85rem;">FESEM micrograph of sintered BNT-based ceramic pellet — magnification 10,000×</div>
-        </div>
+  <div class="gallery-item" data-category="lab" onclick="openLightbox('Images/FerriElectricDuster.jpeg', 'Ferroelectric tester for bulk and thin film')">
+    <img class="gallery-img" src="Images/FerriElectricDuster.jpeg" alt="Ferroelectric Tester" />
+    <div class="gallery-caption">Ferroelectric tester for bulk and thin film</div>
+  </div>
 
-        <div class="gallery-item" data-category="events" style="aspect-ratio:4/3; border-radius:var(--radius-lg); overflow:hidden; position:relative; background:linear-gradient(135deg,#0A2D44,#1C4D6B); cursor:pointer;" onclick="openLightbox(this)">
-          <img src="smatan2014.jpg" alt="SMATAN 2014" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'" />
-          <div class="gallery-placeholder" style="position:absolute;inset:0;color:#fff;">
-            <div class="icon">🎤</div>
-            <div class="label">SMATAN-2014</div>
-          </div>
-          <div class="gallery-caption" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(10,37,64,0.9));padding:24px 16px 16px;color:#fff;font-size:0.85rem;">SMATAN-2014 Symposium opening ceremony — IIT Guwahati</div>
-        </div>
+  <div class="gallery-item" data-category="lab" onclick="openLightbox('Images/Pulsed Laser Deposition.jpeg', 'Pulsed Laser Deposition')">
+    <img class="gallery-img" src="Images/Pulsed Laser Deposition.jpeg" alt="Pulsed Laser Deposition" />
+    <div class="gallery-caption">Pulsed Laser Deposition</div>
+  </div>
 
-        <div class="gallery-item" data-category="group" style="aspect-ratio:4/3; border-radius:var(--radius-lg); overflow:hidden; position:relative; background:linear-gradient(135deg,#0F2D45,#1A4468); cursor:pointer;" onclick="openLightbox(this)">
-          <img src="group2022.jpg" alt="Group 2022" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'" />
-          <div class="gallery-placeholder" style="position:absolute;inset:0;color:#fff;">
-            <div class="icon">👨‍🔬</div>
-            <div class="label">Research Group 2022</div>
-          </div>
-          <div class="gallery-caption" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(10,37,64,0.9));padding:24px 16px 16px;color:#fff;font-size:0.85rem;">Research group photo at IIT Guwahati physics laboratory (2022)</div>
-        </div>
+  <div class="gallery-item" data-category="lab" onclick="openLightbox('Images/LCRmeter.jpg', 'LCR Meter (20 Hz – 1 MHz), 25°C to 500°C — Wayne Kerr Electronics, UK')">
+    <img class="gallery-img" src="Images/LCRmeter.jpg" alt="LCR Meter" />
+    <div class="gallery-caption">LCR Meter (20 Hz – 1 MHz), 25°C to 500°C — Wayne Kerr Electronics, UK</div>
+  </div>
 
-        <div class="gallery-item" data-category="campus" style="aspect-ratio:4/3; border-radius:var(--radius-lg); overflow:hidden; position:relative; background:linear-gradient(135deg,#0C3B52,#165E7A); cursor:pointer;" onclick="openLightbox(this)">
-          <img src="campus2.jpg" alt="Campus aerial" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'" />
-          <div class="gallery-placeholder" style="position:absolute;inset:0;color:#fff;">
-            <div class="icon">🌿</div>
-            <div class="label">IIT Guwahati Campus Aerial</div>
-          </div>
-          <div class="gallery-caption" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(10,37,64,0.9));padding:24px 16px 16px;color:#fff;font-size:0.85rem;">Aerial view of IIT Guwahati campus beside the Brahmaputra river, Assam</div>
-        </div>
+  <div class="gallery-item" data-category="campus" onclick="openLightbox('Images/physics IITG.jpg', 'Physics Department, IIT Guwahati')">
+    <img class="gallery-img" src="Images/physics IITG.jpg" alt="Physics Department" />
+    <div class="gallery-caption">Physics Department, IIT Guwahati</div>
+  </div>
 
-        <div class="gallery-item" data-category="events" style="aspect-ratio:4/3; border-radius:var(--radius-lg); overflow:hidden; position:relative; background:linear-gradient(135deg,#112C42,#1D4866); cursor:pointer;" onclick="openLightbox(this)">
-          <img src="isro_cert.jpg" alt="ISRO Certification" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'" />
-          <div class="gallery-placeholder" style="position:absolute;inset:0;color:#fff;">
-            <div class="icon">🚀</div>
-            <div class="label">ISRO Space Qualification</div>
-          </div>
-          <div class="gallery-caption" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(10,37,64,0.9));padding:24px 16px 16px;color:#fff;font-size:0.85rem;">ZST MIC Substrate receiving ISRO space-qualification approval — Ahmedabad (2022)</div>
-        </div>
+  <div class="gallery-item" data-category="campus" onclick="openLightbox('Images/campus.jpg', 'IIT Guwahati Aerial View')">
+    <img class="gallery-img" src="Images/campus.jpg" alt="IIT Guwahati Campus" />
+    <div class="gallery-caption">IIT Guwahati Aerial View</div>
+  </div>
 
-      </div>
+  <div class="gallery-item" data-category="campus" onclick="openLightbox('Images/campus1.jpg', 'IIT Guwahati Aerial View')">
+    <img class="gallery-img" src="Images/campus1.jpg" alt="IIT Guwahati Campus" />
+    <div class="gallery-caption">IIT Guwahati Aerial View</div>
+  </div>
+
+</div>
+      
     </div>
   </section>
 
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <!-- ═══ LIGHTBOX ═══ -->
+  <div class="lightbox" id="lightbox">
     <div class="lightbox-content">
-      <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+      <button class="lightbox-close" id="lightboxClose">✕</button>
       <img src="" alt="" id="lightboxImg" />
       <p class="lightbox-caption" id="lightboxCaption"></p>
     </div>
   </div>
 
-  <!-- ═══ FOOTER ═══ -->
+  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-inner">
@@ -290,9 +296,7 @@
           <h3>Dr. Pamu Dobbidi</h3>
           <p>Professor, Department of Physics<br />
           Indian Institute of Technology Guwahati (IITG), Guwahati — 781039, Assam, India.</p>
-          <p class="contact-line">
-            📧 <a href="mailto:pamu@iitg.ac.in">pamu@iitg.ac.in</a> &nbsp;|&nbsp; 📞 +91-361-2582721
-          </p>
+          <p class="contact-line">📧 <a href="mailto:pamu@iitg.ac.in">pamu@iitg.ac.in</a> &nbsp;|&nbsp; 📞 +91-361-2582721</p>
         </div>
       </div>
       <div class="footer-bottom">
@@ -308,52 +312,47 @@
     const drawer    = document.getElementById('sideDrawer');
     const overlay   = document.getElementById('drawerOverlay');
     const closeBtn  = document.getElementById('drawerClose');
-    hamburger.addEventListener('click', () => { drawer.classList.add('is-open'); overlay.classList.add('is-open'); document.body.style.overflow='hidden'; });
-    function close(){ drawer.classList.remove('is-open'); overlay.classList.remove('is-open'); document.body.style.overflow=''; }
-    closeBtn.addEventListener('click', close);
-    overlay.addEventListener('click', close);
+    hamburger.addEventListener('click', () => { drawer.classList.add('is-open'); overlay.classList.add('is-open'); document.body.style.overflow = 'hidden'; });
+    function closeDrawer() { drawer.classList.remove('is-open'); overlay.classList.remove('is-open'); document.body.style.overflow = ''; }
+    closeBtn.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
 
     // ── GALLERY FILTER ──
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const galleryItems = document.querySelectorAll('#galleryGrid > div[data-category]');
-    filterBtns.forEach(btn => {
+    document.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         const filter = btn.dataset.filter;
-        galleryItems.forEach(item => {
-          const match = filter === 'all' || item.dataset.category === filter;
-          item.style.display = match ? '' : 'none';
+        document.querySelectorAll('#galleryGrid .gallery-item').forEach(item => {
+          item.style.display = (filter === 'all' || item.dataset.category === filter) ? '' : 'none';
         });
       });
     });
 
     // ── LIGHTBOX ──
-    function openLightbox(el) {
-      const img = el.querySelector('img');
-      const cap = el.querySelector('.gallery-caption');
-      const lb  = document.getElementById('lightbox');
-      const lbImg = document.getElementById('lightboxImg');
-      const lbCap = document.getElementById('lightboxCaption');
-      if (img && img.src && !img.style.display.includes('none')) {
-        lbImg.src = img.src;
-        lbImg.alt = img.alt;
-      } else {
-        lbImg.src = '';
-        lbImg.style.display = 'none';
-      }
-      lbCap.textContent = cap ? cap.textContent : '';
-      lb.classList.add('is-open');
+    const lightbox    = document.getElementById('lightbox');
+    const lbImg       = document.getElementById('lightboxImg');
+    const lbCaption   = document.getElementById('lightboxCaption');
+    const lbClose     = document.getElementById('lightboxClose');
+
+    function openLightbox(src, caption) {
+      lbImg.src = src;
+      lbImg.alt = caption;
+      lbCaption.textContent = caption;
+      lightbox.classList.add('is-open');
       document.body.style.overflow = 'hidden';
     }
-    function closeLightbox(e) {
-      if (!e || e.target === document.getElementById('lightbox') || e.target.classList.contains('lightbox-close')) {
-        document.getElementById('lightbox').classList.remove('is-open');
-        document.getElementById('lightboxImg').style.display = '';
-        document.body.style.overflow = '';
-      }
+
+    function closeLightbox() {
+      lightbox.classList.remove('is-open');
+      document.body.style.overflow = '';
+      // slight delay before clearing so fade-out looks clean
+      setTimeout(() => { lbImg.src = ''; }, 300);
     }
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox({}); });
+
+    lbClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
   </script>
 </body>
 </html>
